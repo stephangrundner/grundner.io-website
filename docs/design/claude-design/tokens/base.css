@@ -1,0 +1,26 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--text-body); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+
+button, input, select, textarea { font: inherit; border-radius: var(--radius-0); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: var(--fw-semibold); letter-spacing: var(--tracking-heading); }
+p { margin: 0; }
+
+::selection { background: var(--accent); color: var(--on-accent); }

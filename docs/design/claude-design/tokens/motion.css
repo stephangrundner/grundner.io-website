@@ -1,0 +1,11 @@
+:root {
+  --dur-micro: 150ms; /* @kind other */
+  --dur-standard: 220ms; /* @kind other */
+  --dur-reveal: 480ms; /* @kind other */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-micro: 0ms; /* @kind other */ --dur-standard: 0ms; /* @kind other */ --dur-reveal: 0ms; /* @kind other */ }
+}

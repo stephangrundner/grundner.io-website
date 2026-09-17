@@ -1011,3 +1011,8 @@ general workflow of this file.
 
 The profile is authoritative for the phase. Where a phase rule restricts what
 this file permits, the restriction wins.
+
+Entry points that do not exist yet are not an error. Until they are created,
+explicit user instructions are the only authoritative source. Create an entry
+point when the first knowledge that belongs to it is accepted, not in advance.
+Do not infer project knowledge from earlier versions of the repository.

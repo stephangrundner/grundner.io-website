@@ -1,0 +1,4 @@
+/* Webfonts. Geist Sans + IBM Plex Mono, geladen von Google Fonts.
+   SUBSTITUTION: keine Font-Binaries vom Kunden erhalten -> Google-Fonts-Auslieferung.
+   Sobald lizenzierte Dateien vorliegen: hier @font-face mit lokalen src: url(...) ersetzen. */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");

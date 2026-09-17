@@ -1,0 +1,22 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  --content-max: 1440px; /* @kind spacing */
+  --measure: 70ch; /* @kind other */
+  --gutter: clamp(16px, 4vw, 48px); /* @kind spacing */
+  --section-y: clamp(56px, 7vw, 112px); /* @kind spacing */
+  --control-height: 48px; /* @kind spacing */
+  --control-height-sm: 40px; /* @kind spacing */
+  --touch-min: 44px; /* @kind spacing */
+  --header-height: 72px; /* @kind spacing */
+}
