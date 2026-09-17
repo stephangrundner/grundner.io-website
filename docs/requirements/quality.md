@@ -99,7 +99,8 @@ Regeln:
 
 - Content Security Policy, Referrer Policy und Permissions Policy so weit
   setzen, wie statisches Hosting es zulässt (ADR-0001: keine eigenen
-  HTTP-Header, nur eingeschränkt über `<meta>`).
+  HTTP-Header, nur eingeschränkt über `<meta>`; der Cloudflare-Proxy ist aus,
+  also auch dort keine Header).
 - keine Secrets in ausgelieferten Dateien
 - Dependencies regelmäßig prüfen; Major-Updates nie ungeprüft übernehmen
 - externe Links sicher behandeln

@@ -20,11 +20,33 @@
 - GitHub Pages erfordert im kostenlosen Plan ein öffentliches Repository.
   Dieses Repository wird öffentlich und direkt von GitHub Pages ausgeliefert —
   siehe [Schutz nicht-öffentlicher Inhalte](#schutz-nicht-öffentlicher-inhalte).
-- Domain: **grundner.io**.
 - Repository: `stephangrundner/grundner.io-website` auf GitHub (öffentlich).
-- Stand 2026-09-17: Das Repository ist noch leer, GitHub Pages ist noch nicht
-  aktiviert. Die Domain löst auf Cloudflare-Adressen auf, d. h. Cloudflare ist
-  als Proxy vorgeschaltet. Ob Cloudflare dauerhaft vorgeschaltet bleibt: Offen.
+
+## Domain und DNS
+
+- Kanonische Adresse: **https://grundner.io**
+- `www.grundner.io` leitet auf `grundner.io` weiter.
+- DNS wird bei Cloudflare verwaltet, **ohne Proxy** (nur DNS). Cloudflare
+  liefert damit weder Header noch Weiterleitungen noch Worker; die Website
+  kommt direkt von GitHub Pages.
+- HTTPS über das Zertifikat von GitHub Pages, „Enforce HTTPS“ aktiv.
+
+Zielkonfiguration (Umsetzung in Phase 0):
+
+| Name | Typ | Ziel | Proxy |
+|---|---|---|---|
+| `grundner.io` | A | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` | aus |
+| `grundner.io` | AAAA | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` | aus |
+| `www.grundner.io` | CNAME | `stephangrundner.github.io` | aus |
+
+Custom Domain im Repository: `grundner.io`. Ist `www` wie oben eingetragen,
+leitet GitHub Pages `www.grundner.io` selbst auf `grundner.io` weiter.
+
+Stand 2026-09-17 (vor der Umstellung): Das Repository ist leer, GitHub Pages ist
+nicht aktiviert. `grundner.io` und `www.grundner.io` lösen auf
+Cloudflare-Proxy-Adressen auf, der Proxy ist also derzeit noch aktiv. Eine
+bestehende `www`-Weiterleitung über Cloudflare entfällt beim Abschalten des
+Proxys und wird durch die Weiterleitung von GitHub Pages ersetzt.
 
 ## CI/CD
 

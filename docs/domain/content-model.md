@@ -26,7 +26,7 @@ Zentral gepflegt.
 | title | ja | Default-Seitentitel |
 | description | ja | Default-Beschreibung |
 | locale | ja | `de-AT` oder `de-DE` — Offen |
-| canonicalBaseUrl | ja | Basis-URL: `https://grundner.io` (mit oder ohne `www`: Offen) |
+| canonicalBaseUrl | ja | Basis-URL: `https://grundner.io` |
 | email | ja | Kontakt-E-Mail — Offen |
 | social.linkedin | nein | LinkedIn-Profil |
 | social.github | nein | GitHub-Profil |

@@ -13,7 +13,8 @@ Voraussetzung: Phasen bestätigt. Remote `origin` ist eingerichtet.
 - Lint, Format, Unit- und E2E-Test-Grundlage
 - validierte Build-Konfiguration
 - Pipeline: Qualitäts-Gates und Veröffentlichung auf GitHub Pages
-- GitHub Pages für dieses Repository aktivieren, Custom Domain `grundner.io`
+- GitHub Pages für dieses Repository aktivieren, Custom Domain `grundner.io`,
+  DNS gemäß [Betrieb](../requirements/operations.md#domain-und-dns) umstellen
 
 Abnahme: App startet lokal, Build läuft, Tests laufen, ein Push auf `main`
 veröffentlicht eine Platzhalterseite.

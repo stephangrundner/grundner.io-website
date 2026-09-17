@@ -37,9 +37,11 @@ weiterleiten ([ADR-0001](0001-static-hosting-github-pages.md)).
   externe Anwendung weiter und liefert bei Ausfall eine statische Fehlerseite.
 - Vorteile: Die Java-Anwendung kann vollständige Seiten serverseitig rendern;
   gleiche Domain und gleicher Pfadraum.
-- Nachteile: zusätzliche Plattform, DNS über Cloudflare, Nutzungsgrenzen im
-  kostenlosen Plan. Die Java-Anwendung muss die Gestaltung selbst nachbauen
-  (gemeinsame Tokens nötig).
+- Nachteile: Nutzungsgrenzen im kostenlosen Plan. Die Java-Anwendung muss die
+  Gestaltung selbst nachbauen (gemeinsame Tokens nötig). Erfordert den
+  Cloudflare-Proxy, der laut aktueller Festlegung aus ist
+  ([Betrieb](../requirements/operations.md#domain-und-dns)); Option B würde
+  diese Festlegung ändern.
 
 ### C — Eigene Subdomain mit vollständiger Anwendung
 

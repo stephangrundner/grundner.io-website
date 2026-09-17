@@ -38,7 +38,9 @@ Vor dem ersten Production Release und vor größeren Releases.
 
 ## Betrieb
 
-- [ ] Domain und HTTPS auf GitHub Pages
+- [ ] `grundner.io` mit HTTPS erreichbar, „Enforce HTTPS“ aktiv
+- [ ] `www.grundner.io` leitet auf `grundner.io` weiter
+- [ ] Cloudflare-Proxy für beide Einträge aus
 - [ ] Repository enthält keine sensiblen Informationen (ADR-0003)
 - [ ] Build-Konfiguration für Production gesetzt
 - [ ] Monitoring der Erreichbarkeit
