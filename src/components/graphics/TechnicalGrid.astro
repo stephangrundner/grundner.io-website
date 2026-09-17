@@ -1,0 +1,33 @@
+---
+/** Decorative technical grid behind a positioned parent (hero, large dark surfaces). */
+---
+
+<div class="technical-grid" aria-hidden="true"></div>
+
+<style>
+  .technical-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        to right,
+        var(--text-body) var(--border-width),
+        transparent var(--border-width)
+      ),
+      linear-gradient(
+        to bottom,
+        var(--text-body) var(--border-width),
+        transparent var(--border-width)
+      );
+    background-size: var(--grid-size) var(--grid-size);
+    opacity: var(--grid-opacity);
+  }
+
+  @media (max-width: 767px) {
+    .technical-grid {
+      background-size: calc(var(--grid-size) / 2) calc(var(--grid-size) / 2);
+      mask-image: linear-gradient(to bottom, black, transparent 60%);
+    }
+  }
+</style>

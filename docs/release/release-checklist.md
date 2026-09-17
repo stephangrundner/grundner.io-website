@@ -38,6 +38,7 @@ Vor dem ersten Production Release und vor größeren Releases.
 
 ## Betrieb
 
+- [ ] interne Komponentenübersicht `/komponenten` entfernt
 - [ ] Suchmaschinen-Ausschluss der Vorabversion abgeschaltet (kein `noindex`
       mehr), Basispfad `/`, Canonical-URLs auf `https://grundner.io`
 - [ ] `grundner.io` mit HTTPS erreichbar, „Enforce HTTPS“ aktiv

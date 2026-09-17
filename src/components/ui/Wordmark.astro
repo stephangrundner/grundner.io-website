@@ -1,0 +1,40 @@
+---
+import { site } from "../../data/site";
+
+interface Props {
+  withDescriptor?: boolean;
+}
+
+const { withDescriptor = false } = Astro.props;
+---
+
+<span class="wordmark">
+  <span class="wordmark__name">{site.wordmark}</span>
+  {withDescriptor && (
+    <span class="wordmark__descriptor">{site.descriptor}</span>
+  )}
+</span>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .wordmark__name {
+    font-size: 0.9375rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--tracking-wordmark);
+    line-height: var(--lh-tight);
+    white-space: nowrap;
+  }
+
+  .wordmark__descriptor {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-sm);
+    letter-spacing: 0.06em;
+    line-height: var(--lh-tight);
+    color: var(--text-meta);
+  }
+</style>

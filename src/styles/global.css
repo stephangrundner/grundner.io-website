@@ -1,0 +1,91 @@
+/*
+ * Global stylesheet.
+ *
+ * Design tokens are the only source of visual values (docs/design/design-system.md).
+ * Components style themselves with scoped CSS and tokens. Tailwind is used for
+ * layout composition only; its default theme is removed and mapped to tokens.
+ * The `tw` prefix keeps Tailwind's theme variables from colliding with token
+ * names such as --font-sans or --text-body.
+ */
+@import "tailwindcss" prefix(tw);
+
+@import "./fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/borders.css";
+@import "./tokens/motion.css";
+@import "./base.css" layer(base);
+
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --blur-*: initial;
+  --ease-*: initial;
+  --animate-*: initial;
+
+  /* Spacing utilities follow the 4 px token scale: tw:p-6 = --space-6 = 24px. */
+  --spacing: 4px;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-graphite: var(--graphite);
+  --color-graphite-elevated: var(--graphite-elevated);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-on-dark: var(--on-dark);
+  --color-page: var(--bg-page);
+  --color-raised: var(--bg-raised);
+  --color-body: var(--text-body);
+  --color-meta: var(--text-meta);
+  --color-border: var(--border-default);
+  --color-border-active: var(--border-active);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --text-display-hero: var(--fs-display-hero);
+  --text-display-hero--line-height: var(--lh-display);
+  --text-display-hero--letter-spacing: var(--tracking-display);
+  --text-h1: var(--fs-h1);
+  --text-h1--line-height: var(--lh-h1);
+  --text-h1--letter-spacing: var(--tracking-heading);
+  --text-h2: var(--fs-h2);
+  --text-h2--line-height: var(--lh-h2);
+  --text-h2--letter-spacing: var(--tracking-heading);
+  --text-h3: var(--fs-h3);
+  --text-h3--line-height: var(--lh-h3);
+  --text-lead: var(--fs-lead);
+  --text-lead--line-height: var(--lh-lead);
+  --text-body: var(--fs-body);
+  --text-body--line-height: var(--lh-body);
+  --text-body-sm: var(--fs-body-sm);
+  --text-label: var(--fs-label);
+  --text-label--line-height: var(--lh-tight);
+  --text-mono: var(--fs-mono);
+  --text-mono-sm: var(--fs-mono-sm);
+
+  --radius-0: var(--radius-0);
+  --radius-1: var(--radius-1);
+
+  --container-measure: var(--measure);
+  --container-content: var(--content-max);
+}

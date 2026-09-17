@@ -1,11 +1,18 @@
 ---
+import "../styles/global.css";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
+
 interface Props {
   title: string;
   description: string;
+  /** Exclude this page from search engines regardless of SITE_NOINDEX. */
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const excludeFromSearch = __SITE_NOINDEX__ || noindex;
 ---
 
 <!doctype html>
@@ -13,12 +20,45 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {__SITE_NOINDEX__ && <meta name="robots" content="noindex, nofollow" />}
+    {excludeFromSearch && <meta name="robots" content="noindex, nofollow" />}
   </head>
   <body>
-    <slot />
+    <a class="skip-link" href="#main">
+      Zum Inhalt springen
+    </a>
+    <SiteHeader />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter />
   </body>
 </html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: 30;
+    padding: var(--space-3) var(--space-4);
+    background: var(--ink);
+    color: var(--on-dark);
+    font-weight: var(--fw-semibold);
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus {
+    transform: none;
+    color: var(--on-dark);
+  }
+
+  main:focus {
+    outline: none;
+  }
+</style>

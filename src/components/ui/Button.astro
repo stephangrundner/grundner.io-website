@@ -1,0 +1,140 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Variant = "primary" | "secondary" | "tertiary";
+type Size = "sm" | "md" | "lg";
+
+interface BaseProps {
+  variant?: Variant;
+  size?: Size;
+  fullWidth?: boolean;
+  class?: string;
+}
+
+interface LinkProps extends BaseProps, Omit<HTMLAttributes<"a">, "class"> {
+  href: string;
+}
+
+interface ButtonProps
+  extends BaseProps, Omit<HTMLAttributes<"button">, "class"> {
+  href?: never;
+  type?: "button" | "submit" | "reset";
+}
+
+type Props = LinkProps | ButtonProps;
+
+const {
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classes = [
+  "button",
+  `button--${variant}`,
+  `button--${size}`,
+  fullWidth && "button--full",
+  className,
+];
+---
+
+{"href" in rest && rest.href !== undefined ? (
+  <a class:list={classes} {...(rest as HTMLAttributes<"a">)}>
+    <slot />
+  </a>
+) : (
+  <button
+    class:list={classes}
+    type="button"
+    {...(rest as HTMLAttributes<"button">)}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border: var(--border-width) solid transparent;
+    border-radius: var(--radius-0);
+    font-family: var(--font-sans);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.01em;
+    line-height: var(--lh-tight);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-micro) var(--ease-standard),
+      color var(--dur-micro) var(--ease-standard),
+      border-color var(--dur-micro) var(--ease-standard);
+  }
+
+  .button--sm {
+    min-height: var(--touch-min);
+    padding-inline: var(--space-4);
+    font-size: var(--fs-label);
+  }
+
+  .button--md {
+    min-height: var(--control-height);
+    padding-inline: var(--space-6);
+    font-size: 0.96875rem;
+  }
+
+  .button--lg {
+    min-height: 56px;
+    padding-inline: var(--space-8);
+    font-size: 1.0625rem;
+  }
+
+  .button--full {
+    width: 100%;
+  }
+
+  .button--primary {
+    background: var(--action-primary-bg);
+    border-color: var(--action-primary-bg);
+    color: var(--action-primary-text);
+  }
+
+  .button--primary:hover {
+    background: var(--action-primary-bg-hover);
+    border-color: var(--action-primary-bg-hover);
+    color: var(--action-primary-text);
+  }
+
+  .button--secondary {
+    background: transparent;
+    border-color: var(--text-body);
+    color: var(--text-body);
+  }
+
+  .button--secondary:hover {
+    background: var(--text-body);
+    color: var(--bg-page);
+  }
+
+  .button--tertiary {
+    padding-inline: var(--space-2);
+    background: transparent;
+    color: var(--text-body);
+  }
+
+  .button--tertiary:hover {
+    color: var(--accent-hover);
+  }
+
+  .button:disabled,
+  .button[aria-disabled="true"] {
+    background: var(--bg-sunken);
+    border-color: var(--border-default);
+    color: var(--line-strong);
+    cursor: not-allowed;
+  }
+</style>

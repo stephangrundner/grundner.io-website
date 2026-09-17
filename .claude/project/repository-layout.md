@@ -5,9 +5,16 @@
 .claude/                   Working instructions for agents
 docs/                      Authoritative project knowledge (German)
 src/
+  components/
+    graphics/              Decorative and technical graphics
+    layout/                Container, Section, Grid, header, footer
+    ui/                    Buttons, links, wordmark
   config/                  Build configuration and its validation
+  data/                    Small typed data: site, navigation
   layouts/                 Page layouts
+  lib/                     Framework-independent helpers (e.g. URLs)
   pages/                   Routes (file-based routing)
+  styles/                  global.css, base.css, fonts.css, tokens/
 tests/
   e2e/                     Playwright end-to-end and accessibility tests
 astro.config.ts            Astro configuration (reads validated build config)

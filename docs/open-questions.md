@@ -20,6 +20,8 @@ getroffen ist.
 | formelle Anrede „Sie“ bestätigen | [Marke](product/brand-and-content-rules.md#tonalität-und-sprache) |
 | Headline-Schrift: Geist Sans oder Instrument Sans | [Design System](design/design-system.md#typografie) |
 | Nuance des Signalorange nach Foto- und Kontrasttest | [Design System](design/design-system.md#farbe) |
+| Oranger Text auf hellen Flächen verfehlt WCAG AA (`--accent` 2,8–3,0:1, `--accent-hover` 3,5:1; nötig 4,5:1). Betrifft laut Design System Nummern in `ServiceCard`/`ProcessSteps`, Meta-Zeile der `InsightCard`, aktive Navigation mobil und die Hover-Farbe von Links. Nuance anpassen, eigenen dunkleren Text-Token einführen oder Orange auf hellem Grund nur für Flächen und Linien verwenden? Bis zur Entscheidung: oranger Text nur auf dunklen Flächen (5,6:1) | [Design System](design/design-system.md#farbe) |
+| Footer im Design System ergänzen oder abgeleitete Umsetzung freigeben | [Komponenten](ui/components.md#umsetzungsstand) |
 | Lucide als Icon-Bibliothek bestätigen | [Design System](design/design-system.md#icons) |
 | Bildplatzhalter in Production zulässig oder freigegebenes Foto Pflicht? | [Design System](design/design-system.md#platzhalter) |
 | Abschluss-CTA: welche zwei von drei Aktionen | [Seiten](ui/pages.md#abschluss-cta) |

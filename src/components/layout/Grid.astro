@@ -1,0 +1,78 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * `columns`: 4 / 8 / 12 column layout grid (mobile / tablet / desktop).
+   * `cards`: card grid joined by 1 px lines, 1 / 2 / `desktopColumns` columns.
+   */
+  variant?: "columns" | "cards";
+  desktopColumns?: 2 | 3 | 4;
+  as?: "div" | "ul" | "ol";
+}
+
+const {
+  variant = "columns",
+  desktopColumns = 4,
+  as: Element = "div",
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<Element
+  class:list={["grid", `grid--${variant}`, className]}
+  style={
+    variant === "cards"
+      ? `--grid-desktop-columns: ${desktopColumns}`
+      : undefined
+  }
+  {...rest}
+>
+  <slot />
+</Element>
+
+<style>
+  /* No outer margins: spacing between blocks is set by the composing page. */
+  .grid {
+    display: grid;
+  }
+
+  .grid--columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-4);
+    row-gap: var(--space-8);
+  }
+
+  .grid--cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--border-width);
+    background: var(--border-default);
+    border: var(--hairline);
+  }
+
+  @media (min-width: 768px) {
+    .grid--columns {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      column-gap: var(--space-6);
+    }
+
+    .grid--cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid--columns {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-8);
+    }
+
+    .grid--cards {
+      grid-template-columns: repeat(
+        var(--grid-desktop-columns),
+        minmax(0, 1fr)
+      );
+    }
+  }
+</style>

@@ -1,0 +1,51 @@
+:root {
+  /* Basiswerte */
+  --canvas: #f5f2eb;
+  --surface: #fbf9f4;
+  --surface-muted: #ece8df;
+  --ink: #0b0b0b;
+  --ink-muted: #5f5d58;
+  --graphite: #1a1a1a;
+  --graphite-elevated: #252525;
+  --graphite-line: #3a3a3a;
+  --line: #d3cfc5;
+  --line-strong: #9b978f;
+  --accent: #ff5a1f;
+  --accent-hover: #e94a10;
+  --on-accent: #0b0b0b;
+  --on-dark: #f5f2eb;
+  --focus: #006bff;
+  --danger: #e94a10;
+
+  /* Semantische Aliase - hell */
+  --bg-page: var(--canvas);
+  --bg-raised: var(--surface);
+  --bg-sunken: var(--surface-muted);
+  --text-body: var(--ink);
+  --text-meta: var(--ink-muted);
+  --text-on-accent: var(--on-accent);
+  --border-default: var(--line);
+  --border-active: var(--line-strong);
+  --border-focus: var(--focus);
+  --action-primary-bg: var(--accent);
+  --action-primary-bg-hover: var(--accent-hover);
+  --action-primary-text: var(--on-accent);
+
+  /* Semantische Aliase - dunkle Sektionen */
+  --bg-dark: var(--graphite);
+  --bg-dark-raised: var(--graphite-elevated);
+  --border-dark: var(--graphite-line);
+  --text-on-dark: var(--on-dark);
+  --text-meta-on-dark: var(--line-strong);
+}
+
+/* Dunkle Fläche: Scope, kein globales Dark Theme. */
+[data-surface="dark"] {
+  --bg-page: var(--graphite);
+  --bg-raised: var(--graphite-elevated);
+  --bg-sunken: var(--graphite);
+  --text-body: var(--on-dark);
+  --text-meta: var(--line-strong);
+  --border-default: var(--graphite-line);
+  --border-active: var(--line-strong);
+}

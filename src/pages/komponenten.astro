@@ -1,0 +1,213 @@
+---
+/*
+ * Internal overview of the design foundation for visual review.
+ * Not linked, always excluded from search engines; removed or hidden before
+ * go-live (docs/release/release-checklist.md).
+ */
+import Container from "../components/layout/Container.astro";
+import Grid from "../components/layout/Grid.astro";
+import Section from "../components/layout/Section.astro";
+import Button from "../components/ui/Button.astro";
+import TextLink from "../components/ui/TextLink.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/url";
+
+const typeScale = [
+  { name: "Display Hero", className: "tw:text-display-hero" },
+  { name: "H1", className: "tw:text-h1" },
+  { name: "H2", className: "tw:text-h2" },
+  { name: "H3", className: "tw:text-h3" },
+  { name: "Lead", className: "tw:text-lead" },
+  { name: "Body", className: "tw:text-body" },
+  { name: "Label", className: "tw:text-label" },
+];
+
+const colors = [
+  "canvas",
+  "surface",
+  "surface-muted",
+  "ink",
+  "ink-muted",
+  "graphite",
+  "graphite-elevated",
+  "line",
+  "line-strong",
+  "accent",
+  "accent-hover",
+  "focus",
+];
+---
+
+<BaseLayout
+  title="Komponenten – Design Foundation"
+  description="Interne Übersicht der Design Foundation."
+  noindex
+>
+  <Section
+    number="00"
+    label="Design Foundation"
+    title="Komponenten"
+    lead="Interne Übersicht für die visuelle Prüfung. Nicht Teil der veröffentlichten Website."
+    headingLevel={1}
+    technicalGrid
+  />
+
+  <Section number="01" label="Farben" title="Tokens">
+    <ul class="swatches">
+      {colors.map((name) => (
+        <li class="swatch">
+          <span class="swatch__color" style={`background: var(--${name})`} />
+          <code class="swatch__name">--{name}</code>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section number="02" label="Typografie" title="Skala" surface="raised">
+    <ul class="type-scale">
+      {typeScale.map((style) => (
+        <li class="type-scale__row">
+          <span class="type-scale__name">{style.name}</span>
+          <span class:list={[style.className, "tw:font-semibold"]}>
+            Klare Systeme
+          </span>
+        </li>
+      ))}
+      <li class="type-scale__row">
+        <span class="type-scale__name">Mono</span>
+        <span class="tw:font-mono tw:text-mono tw:uppercase">
+          Fig. 02 · Metadaten
+        </span>
+      </li>
+    </ul>
+  </Section>
+
+  <Section number="03" label="Aktionen" title="Buttons und Links">
+    <div class="tw:flex tw:flex-wrap tw:items-center tw:gap-3">
+      <Button href={withBase("/komponenten")}>Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="tertiary">Tertiary</Button>
+      <Button size="sm">Small</Button>
+      <Button size="lg">Large</Button>
+      <Button disabled>Disabled</Button>
+    </div>
+    <div class="tw:mt-8 tw:flex tw:flex-wrap tw:gap-8">
+      <TextLink href={withBase("/komponenten")}>Weiterlesen</TextLink>
+      <TextLink href={withBase("/komponenten")} direction="down">
+        Download
+      </TextLink>
+      <TextLink
+        href={withBase("/komponenten")}
+        direction="left"
+        underline={false}
+      >
+        Zurück
+      </TextLink>
+    </div>
+  </Section>
+
+  <Section
+    number="04"
+    label="Dunkle Fläche"
+    title="Graphit als gesetzter Akzent"
+    lead="Buttons und Links übernehmen die Farben der dunklen Fläche."
+    surface="dark"
+    technicalGrid
+  >
+    <div class="tw:flex tw:flex-wrap tw:items-center tw:gap-3">
+      <Button>Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <TextLink href={withBase("/komponenten")}>Weiterlesen</TextLink>
+    </div>
+  </Section>
+
+  <Section number="05" label="Raster" title="Spalten und Kartenraster">
+    <Grid>
+      {Array.from({ length: 12 }, (_, index) => (
+        <div class="column-demo">{String(index + 1).padStart(2, "0")}</div>
+      ))}
+    </Grid>
+    <Grid variant="cards" desktopColumns={4} as="ul" class="tw:mt-12">
+      {["01", "02", "03", "04"].map((number) => (
+        <li class="card-demo">
+          <span class="card-demo__number">{number}</span>
+          <span class="tw:text-h3 tw:font-semibold">Karte</span>
+        </li>
+      ))}
+    </Grid>
+  </Section>
+
+  <Container class="tw:pb-16">
+    <p class="tw:text-meta tw:text-label">
+      Header, Footer und Fokuszustände sind auf dieser Seite selbst zu prüfen.
+    </p>
+  </Container>
+</BaseLayout>
+
+<style>
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .swatch {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .swatch__color {
+    height: var(--space-16);
+    border: var(--hairline);
+  }
+
+  .swatch__name,
+  .type-scale__name,
+  .card-demo__number {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: var(--tracking-mono);
+    color: var(--text-meta);
+  }
+
+  .type-scale {
+    display: grid;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .type-scale__row {
+    display: grid;
+    gap: var(--space-2);
+    padding-bottom: var(--space-6);
+    border-bottom: var(--hairline);
+    overflow-wrap: anywhere;
+  }
+
+  .column-demo {
+    padding-block: var(--space-4);
+    background: var(--bg-sunken);
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    text-align: center;
+  }
+
+  .card-demo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-height: 200px;
+    padding: clamp(22px, 2.5vw, 36px);
+    background: var(--bg-raised);
+    transition: background-color var(--dur-standard) var(--ease-standard);
+  }
+
+  .card-demo:hover {
+    background: var(--bg-page);
+  }
+</style>

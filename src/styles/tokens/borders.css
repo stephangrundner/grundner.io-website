@@ -1,0 +1,20 @@
+:root {
+  --radius-0: 0px;
+  --radius-1: 2px;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --hairline: 1px solid var(--border-default);
+  --hairline-strong: 1px solid var(--border-active);
+  --accent-rule: 2px solid var(--accent);
+  --grid-size: 80px;
+  --grid-opacity: 0.045;
+  --hatch: repeating-linear-gradient(
+    135deg,
+    rgba(11, 11, 11, 0.07) 0 1px,
+    transparent 1px 9px
+  );
+  --shadow-none: none;
+  --shadow-overlay: 0 24px 64px rgba(11, 11, 11, 0.18);
+  --focus-ring: 2px solid var(--focus);
+  --focus-offset: 3px;
+}

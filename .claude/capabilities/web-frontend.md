@@ -34,6 +34,24 @@ Astro-specific rules are added at bootstrap.
   visual references, not production code. Hover, focus and active states are
   implemented in CSS, not in JavaScript.
 * No raw hex values or arbitrary pixel values where a token exists.
+* Tokens live in `src/styles/tokens/` and must match the snapshot in
+  `docs/design/claude-design/tokens/` (documented deviations only).
+* Components style themselves with scoped `<style>` and tokens. Tailwind is for
+  layout composition in pages, always with the `tw:` prefix (e.g.
+  `tw:flex tw:gap-6`). Its default theme is removed; only token-mapped values
+  exist.
+* Scoped component styles are unlayered and therefore override Tailwind
+  utilities. Components never set their own outer margins, so pages can space
+  them with utilities.
+* Dark surfaces set `data-surface="dark"`; components use semantic aliases
+  (`--bg-page`, `--text-body`, …) and adapt without `onDark` props.
+* Orange text only on dark surfaces until the contrast question in
+  `docs/open-questions.md` is resolved.
+* Headlines are not hyphenated automatically (`hyphens: manual`); running text
+  is.
+* All internal links go through `withBase()` (`src/lib/url.ts`).
+* Interactive enhancements must leave content usable without JavaScript
+  (`html.js` is set inline in the layout).
 * Deviations are justified and documented.
 
 ## Code

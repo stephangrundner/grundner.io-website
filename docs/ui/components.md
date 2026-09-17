@@ -96,3 +96,32 @@ größeren Neuentwürfen zuerst in Claude Design ergänzen.
 | Conversion | `ContactPanel`, `ContactForm`, `ProfileDownload` |
 | Plattform | `ConsentBanner` / Einwilligungseinstellungen ([Analytics](../requirements/analytics.md)); `ExternalAppFrame` mit Lade- und Fehlerzustand ([Externe Anwendungen](../requirements/external-applications.md)) |
 | Social | Quote Card, Carousel-Cover, Artikel-Teaser, Diagrammkarte, Autorenkarte |
+
+## Umsetzungsstand
+
+| Komponente | Datei | Seit | Anmerkung |
+|---|---|---|---|
+| `Container` | `src/components/layout/Container.astro` | Phase 1 | Breiten `content` (1440 px) und `measure` (70ch) |
+| `Section` | `src/components/layout/Section.astro` | Phase 1 | enthält die Funktion von `SectionHeader`; Flächen `page`, `raised`, `dark`; optional technisches Raster |
+| `Grid` | `src/components/layout/Grid.astro` | Phase 1 | `columns` (4/8/12) und `cards` (1-px-Rasterverbund) |
+| `SiteHeader` | `src/components/layout/SiteHeader.astro` | Phase 1 | entspricht `Navbar` + `Drawer`; siehe Abweichungen |
+| `SiteFooter` | `src/components/layout/SiteFooter.astro` | Phase 1 | im Design System nicht vorhanden, aus Tokens abgeleitet — Offen |
+| `Button` | `src/components/ui/Button.astro` | Phase 1 | Varianten und Größen wie Design System; auf dunklen Flächen über `data-surface` statt `onDark` |
+| `TextLink` | `src/components/ui/TextLink.astro` | Phase 1 | entspricht `ArrowLink` |
+| `Wordmark` | `src/components/ui/Wordmark.astro` | Phase 1 | |
+| `TechnicalGrid` | `src/components/graphics/TechnicalGrid.astro` | Phase 1 | Mobile halbe Rastergröße, nach unten ausgeblendet |
+| Skip Link | `src/layouts/BaseLayout.astro` | Phase 1 | |
+
+Interne Übersicht aller umgesetzten Grundlagen: `/komponenten` (nicht verlinkt,
+immer `noindex`, vor dem Go-Live zu entfernen).
+
+### Abweichungen vom Design System
+
+- **Aktiver Navigationspunkt mobil:** Das Design System färbt ihn orange
+  (`--accent-hover`). Umgesetzt als orange 2-px-Linie links bei schwarzem Text,
+  weil oranger Text auf hellem Grund WCAG AA verfehlt
+  ([Offene Fragen](../open-questions.md)).
+- **CTA auf schmalen Displays:** Unter 480 px passt der CTA nicht neben
+  Wortmarke und Menü-Button; er steht dort am Ende des mobilen Menüs.
+- **Mobiles Menü ohne JavaScript:** Die Navigation ist dann dauerhaft
+  ausgeklappt sichtbar.

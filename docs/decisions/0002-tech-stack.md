@@ -104,6 +104,10 @@ wenige Stunden alten Folgeversionen gewählt.
 Tailwind CSS, MDX, Sitemap, RSS und Fonts werden mit der Phase eingeführt, die
 sie benötigt.
 
+Ergänzt in Phase 1 (2026-09-17): Tailwind CSS 4.3.3 mit `@tailwindcss/vite`
+4.3.3 (Präfix `tw`, Standard-Theme entfernt, auf Tokens abgebildet),
+`@fontsource-variable/geist` 5.3.0, `@fontsource/ibm-plex-mono` 5.3.0.
+
 Nicht verwendet: siehe `.claude/capabilities/web-frontend.md`.
 
 ## Konsequenzen

@@ -1,0 +1,68 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  href: string;
+  direction?: "right" | "down" | "left";
+  underline?: boolean;
+}
+
+const {
+  direction = "right",
+  underline = true,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const glyphs = { right: "→", down: "↓", left: "←" } as const;
+---
+
+<a
+  class:list={["text-link", underline && "text-link--underline", className]}
+  {...rest}
+>
+  {direction === "left" && (
+    <span class="text-link__glyph" aria-hidden="true">
+      {glyphs.left}
+    </span>
+  )}
+  <span>
+    <slot />
+  </span>
+  {direction !== "left" && (
+    <span class="text-link__glyph" aria-hidden="true">
+      {glyphs[direction]}
+    </span>
+  )}
+</a>
+
+<style>
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--touch-min);
+    font-size: 0.9375rem;
+    font-weight: var(--fw-semibold);
+    color: var(--text-body);
+    transition: color var(--dur-micro) var(--ease-standard);
+  }
+
+  .text-link--underline span:not(.text-link__glyph) {
+    padding-bottom: 6px;
+    border-bottom: var(--border-width) solid currentColor;
+  }
+
+  .text-link:hover {
+    color: var(--accent-hover);
+  }
+
+  .text-link__glyph {
+    font-family: var(--font-mono);
+    transition: transform var(--dur-micro) var(--ease-standard);
+  }
+
+  .text-link:hover .text-link__glyph {
+    transform: translateX(3px);
+  }
+</style>

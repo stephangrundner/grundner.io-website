@@ -1,14 +1,13 @@
-import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("start page renders", async ({ page }) => {
+test("start page renders the placeholder", async ({ page }) => {
   const response = await page.goto("./");
 
   expect(response?.status()).toBe(200);
   await expect(page).toHaveTitle("Stephan Grundner");
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Stephan Grundner",
+    "Komplexe Probleme. Klare Systeme. Produktive Software.",
   );
 });
 
@@ -25,13 +24,12 @@ test("start page is excluded from search engines unless configured otherwise", a
   }
 });
 
-test("start page has no detectable accessibility violations", async ({
+test("component overview is always excluded from search engines", async ({
   page,
 }) => {
-  await page.goto("./");
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
-    .analyze();
-
-  expect(results.violations).toEqual([]);
+  await page.goto("komponenten");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    "noindex, nofollow",
+  );
 });

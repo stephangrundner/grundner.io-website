@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import { parseBuildEnv } from "./src/config/build-env";
 
@@ -9,6 +10,7 @@ export default defineConfig({
   output: "static",
   trailingSlash: "ignore",
   vite: {
+    plugins: [tailwindcss()],
     define: {
       __SITE_NOINDEX__: JSON.stringify(buildEnv.SITE_NOINDEX),
     },

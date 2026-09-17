@@ -96,6 +96,16 @@ Farbregeln:
 - Dunkle Sektionen bewusst gesetzt, kein durchgehendes Dark Theme.
 - Diagramme monochrom; Orange nur für Fokus, Aktivität oder Wirkung.
 - Genaue Nuance des Orange nach Foto- und Kontrasttest — Offen.
+- Kontraste (geprüft 2026-09-17): Schwarz auf Orange 6,3:1; `--ink-muted` auf
+  `--canvas` 5,9:1; `--line-strong` auf Graphit 6,0:1; Orange auf Graphit
+  5,6:1; Fokusblau auf `--canvas` 4,1:1 und auf Graphit 3,8:1 (Nicht-Text,
+  mind. 3:1). **Oranger Text auf hellen Flächen erreicht nur 2,8–3,5:1 und
+  verfehlt WCAG AA** — bis zur Klärung wird Orange auf hellem Grund nur für
+  Flächen, Linien und Marker eingesetzt, nicht für Text
+  ([Offene Fragen](../open-questions.md)).
+- `--line-strong` auf `--canvas` erreicht 2,6:1 und genügt damit nicht als
+  alleinige Begrenzung von Eingabefeldern (Nicht-Text-Kontrast 3:1) — bei den
+  Formularen in Phase 5 zu berücksichtigen.
 
 ### Typografie
 
@@ -132,9 +142,15 @@ Regeln:
 
 **Font-Auslieferung:** Claude Design lädt die Schriften als Übergangslösung von
 Google Fonts (`tokens/fonts.css`, dort selbst als Substitution markiert). Die
-Website bündelt die Schriften lokal; keine Laufzeitanfrage an Google Fonts
+Website bündelt die Schriften lokal über Fontsource: Geist als variable Schrift
+(Familienname „Geist Variable“, deshalb in `--font-sans` vorangestellt) und IBM
+Plex Mono in 400 und 500. Instrument Sans wird erst geladen, wenn die
+Schriftwahl dafür fällt. Keine Laufzeitanfrage an Google Fonts
 ([Qualität](../requirements/quality.md#datenschutz)). Geist, Instrument Sans und
 IBM Plex Mono stehen unter der SIL Open Font License.
+
+**Umsetzung im Code:** Tokens unter `src/styles/tokens/` (Kopie des Snapshots
+ohne `fonts.css`), Einstieg `src/styles/global.css`.
 
 ### Abstände und Layout
 

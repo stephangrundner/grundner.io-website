@@ -1,0 +1,137 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import TechnicalGrid from "../graphics/TechnicalGrid.astro";
+import Container from "./Container.astro";
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Consecutive section number, e.g. "03". */
+  number?: string;
+  /** Short uppercase label shown next to the number. */
+  label?: string;
+  title?: string;
+  lead?: string;
+  headingLevel?: 1 | 2;
+  surface?: "page" | "raised" | "dark";
+  technicalGrid?: boolean;
+}
+
+const {
+  number,
+  label,
+  title,
+  lead,
+  headingLevel = 2,
+  surface = "page",
+  technicalGrid = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Heading = `h${headingLevel}` as const;
+const hasHeader = Boolean(label || title || lead);
+---
+
+<section
+  class:list={["section", `section--${surface}`, className]}
+  data-surface={surface === "dark" ? "dark" : undefined}
+  {...rest}
+>
+  {technicalGrid && <TechnicalGrid />}
+  <Container class="section__inner">
+    {hasHeader && (
+      <header class="section__header">
+        {label && (
+          <div class="section__index">
+            <span class="section__label">
+              {number && <>{number}&nbsp;&nbsp;/&nbsp;&nbsp;</>}
+              {label}
+            </span>
+            <span class="section__rule" aria-hidden="true" />
+          </div>
+        )}
+        {title && (
+          <Heading
+            class:list={[
+              "section__title",
+              headingLevel === 1 && "section__title--page",
+            ]}
+          >
+            {title}
+          </Heading>
+        )}
+        {lead && <p class="section__lead">{lead}</p>}
+      </header>
+    )}
+    <slot />
+  </Container>
+</section>
+
+<style>
+  .section {
+    position: relative;
+    padding-block: var(--section-y);
+    background: var(--bg-page);
+    color: var(--text-body);
+  }
+
+  .section--raised {
+    background: var(--bg-raised);
+    border-block: var(--hairline);
+  }
+
+  .section__inner {
+    position: relative;
+  }
+
+  .section__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  .section__header:last-child {
+    margin-bottom: 0;
+  }
+
+  .section__index {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .section__label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+    white-space: nowrap;
+  }
+
+  .section__rule {
+    flex: 1;
+    height: var(--border-width);
+    background: var(--border-default);
+  }
+
+  .section__title {
+    max-width: 26ch;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-h2);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 650;
+  }
+
+  .section__title--page {
+    font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
+    font-weight: var(--fw-bold);
+  }
+
+  .section__lead {
+    max-width: 62ch;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+</style>

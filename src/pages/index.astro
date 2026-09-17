@@ -1,13 +1,28 @@
 ---
+import Section from "../components/layout/Section.astro";
+import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Stephan Grundner"
+  title={site.name}
   description="Die Website von Stephan Grundner ist in Vorbereitung."
 >
-  <main>
-    <h1>Stephan Grundner</h1>
-    <p>Die Website ist in Vorbereitung.</p>
-  </main>
+  <Section
+    label="In Vorbereitung"
+    title={site.claim}
+    headingLevel={1}
+    technicalGrid
+    class="placeholder"
+  >
+    <p class="tw:max-w-measure tw:text-lead">
+      Die Website ist in Vorbereitung.
+    </p>
+  </Section>
 </BaseLayout>
+
+<style>
+  .placeholder {
+    min-height: 60vh;
+  }
+</style>
