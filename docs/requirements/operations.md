@@ -36,7 +36,15 @@ Repositories erreichbar:
   ohne Codeänderung auf `/` umschaltbar sein (Build-Konfiguration).
 - Sitemap, Canonical URLs und Open-Graph-Adressen verwenden in der Vorabversion
   die GitHub-Pages-Adresse.
-- Ob die Vorabversion von Suchmaschinen ausgeschlossen wird: Offen.
+- Die Vorabversion wird von Suchmaschinen ausgeschlossen:
+  - jede Seite trägt `<meta name="robots" content="noindex, nofollow">`
+  - keine Sitemap-Einreichung bei Suchmaschinen
+  - Seiten werden nicht per `robots.txt` gesperrt, damit Suchmaschinen das
+    `noindex` lesen können; eine `robots.txt` unter dem Unterpfad würde ohnehin
+    nicht ausgewertet
+  - ein `X-Robots-Tag`-Header ist auf GitHub Pages nicht möglich
+- Der Ausschluss wird über die Build-Konfiguration gesteuert und beim Go-Live
+  abgeschaltet.
 
 ## Domain und DNS
 

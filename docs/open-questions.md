@@ -16,7 +16,6 @@ getroffen ist.
 
 | Frage | Bezug |
 |---|---|
-| Vorabversion unter github.io von Suchmaschinen ausschließen? | [Betrieb](requirements/operations.md#vorabversion-bis-zum-go-live) |
 | Locale `de-AT` oder `de-DE` | [Content-Modell](domain/content-model.md) |
 | formelle Anrede „Sie“ bestätigen | [Marke](product/brand-and-content-rules.md#tonalität-und-sprache) |
 | Headline-Schrift: Geist Sans oder Instrument Sans | [Design System](design/design-system.md#typografie) |

@@ -38,6 +38,8 @@ Vor dem ersten Production Release und vor größeren Releases.
 
 ## Betrieb
 
+- [ ] Suchmaschinen-Ausschluss der Vorabversion abgeschaltet (kein `noindex`
+      mehr), Basispfad `/`, Canonical-URLs auf `https://grundner.io`
 - [ ] `grundner.io` mit HTTPS erreichbar, „Enforce HTTPS“ aktiv
 - [ ] `www.grundner.io` leitet auf `grundner.io` weiter
 - [ ] Cloudflare-Proxy für beide Einträge aus

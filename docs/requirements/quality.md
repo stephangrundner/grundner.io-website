@@ -84,6 +84,8 @@ Regeln:
 - RSS-Feed für veröffentlichte Insights
 - verständliche 404-Seite
 - keine Indexierung von Draft-Inhalten
+- keine Indexierung der Vorabversion vor dem Go-Live
+  ([Betrieb](operations.md#vorabversion-bis-zum-go-live))
 - interne Links zwischen Leistungen, Projekten und Insights
 - keine leeren Tag- oder Filterseiten
 
