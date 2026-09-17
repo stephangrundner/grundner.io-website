@@ -4,7 +4,7 @@ Status: bestätigt durch Stephan Grundner (2026-09-17).
 
 | Phase | Stand |
 |---|---|
-| 0 — Projektinitialisierung | in Arbeit |
+| 0 — Projektinitialisierung | abgeschlossen (2026-09-17, erstes Deployment der Platzhalterseite) |
 | 1–7 | offen |
 
 Grundsatz: Jeder Schritt liefert einen vertikalen, prüfbaren Zustand. Keine
