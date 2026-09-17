@@ -2,15 +2,25 @@
 import "../styles/global.css";
 import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
+import { site } from "../data/site";
 
 interface Props {
   title: string;
   description: string;
   /** Exclude this page from search engines regardless of SITE_NOINDEX. */
   noindex?: boolean;
+  ogType?: "website" | "article";
+  /** JSON-LD structured data for this page. */
+  structuredData?: Record<string, unknown>;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  ogType = "website",
+  structuredData,
+} = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const excludeFromSearch = __SITE_NOINDEX__ || noindex;
 ---
@@ -27,6 +37,19 @@ const excludeFromSearch = __SITE_NOINDEX__ || noindex;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     {excludeFromSearch && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    {structuredData && (
+      <script
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(structuredData)}
+      ></script>
+    )}
   </head>
   <body>
     <a class="skip-link" href="#main">
@@ -37,6 +60,9 @@ const excludeFromSearch = __SITE_NOINDEX__ || noindex;
       <slot />
     </main>
     <SiteFooter />
+    <script>
+      import "../scripts/reveal.ts";
+    </script>
   </body>
 </html>
 

@@ -1,0 +1,71 @@
+---
+import { profileTeaser } from "../../data/home";
+import { withBase } from "../../lib/url";
+import Section from "../layout/Section.astro";
+import Placeholder from "../ui/Placeholder.astro";
+import TextLink from "../ui/TextLink.astro";
+---
+
+<Section number="07" label="Profil" reveal>
+  <div class="profile">
+    <div class="profile__portrait">
+      <Placeholder
+        variant="image"
+        description={profileTeaser.portrait.description}
+        aspectRatio="4 / 5"
+        corners
+      />
+    </div>
+    <div class="profile__text">
+      <Placeholder description={profileTeaser.text.description} />
+      <Placeholder description={profileTeaser.contexts.description} />
+      <div class="profile__links">
+        {profileTeaser.links.map((link) => (
+          <TextLink href={withBase(link.href)}>{link.label}</TextLink>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .profile {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .profile__portrait {
+    max-width: 360px;
+  }
+
+  .profile__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+
+  .profile__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-top: var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .profile {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-8);
+      align-items: start;
+    }
+
+    .profile__portrait {
+      grid-column: 1 / span 4;
+      max-width: none;
+    }
+
+    .profile__text {
+      grid-column: 6 / span 7;
+    }
+  }
+</style>

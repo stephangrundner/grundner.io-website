@@ -71,7 +71,7 @@ Maximal ein primärer CTA pro Sichtbereich.
 
 ## `/` — Startseite
 
-Reihenfolge; Sektionen ab Punkt 3 mit fortlaufender Sektionsnummer:
+Reihenfolge; Sektionen ab Punkt 4 mit fortlaufender Sektionsnummer `01`–`08`:
 
 1. Header
 2. Hero
@@ -85,6 +85,13 @@ Reihenfolge; Sektionen ab Punkt 3 mit fortlaufender Sektionsnummer:
 10. Kurzprofil
 11. Abschluss-CTA
 12. Footer
+
+Solange für eine Sektion keine freigegebene Überschrift existiert, ist das
+Sektionslabel (z. B. „02 / Leistungen“) die H2. Die Nummer ist dekorativ und für
+Screenreader ausgeblendet. Fehlende Inhalte erscheinen als gekennzeichnete
+Platzhalter (siehe [Content-Status](../content/content-status.md)).
+
+Inhaltsquelle: `src/data/home.ts`.
 
 ### Header
 
@@ -228,8 +235,9 @@ Senkt Kaufhürden: kurze Einstiege und langfristige Mandate sind möglich.
 > Softwareentwicklung mit AI neu aufstellen?
 
 Aktionen: Erstgespräch vereinbaren, Nachricht senden, Projektprofil ansehen.
-Im Design System maximal zwei Aktionen, davon eine primär — Auswahl bei der
-Umsetzung.
+Im Design System maximal zwei Aktionen, davon eine primär. Umgesetzt wie im
+Beispiel des Design Systems: „Erstgespräch vereinbaren“ (primär) und
+„Projektprofil ansehen“ — Auswahl Offen.
 
 ## `/leistungen`
 

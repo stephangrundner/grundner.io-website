@@ -1,0 +1,81 @@
+---
+import { services } from "../../data/home";
+import { withBase } from "../../lib/url";
+import Grid from "../layout/Grid.astro";
+import Section from "../layout/Section.astro";
+import TextLink from "../ui/TextLink.astro";
+---
+
+<Section number="02" label="Leistungen" reveal>
+  <Grid variant="cards" desktopColumns={4} as="ul">
+    {services.map((service) => (
+      <li class="service">
+        <span class="service__number" aria-hidden="true">
+          {service.number}
+        </span>
+        <h3 class="service__title">{service.title}</h3>
+        <p class="service__description">{service.description}</p>
+        <TextLink
+          href={withBase("/leistungen")}
+          underline={false}
+          class="service__link"
+        >
+          Leistung ansehen
+        </TextLink>
+      </li>
+    ))}
+  </Grid>
+</Section>
+
+<style>
+  .service {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+    min-height: 300px;
+    padding: clamp(22px, 2.5vw, 36px);
+    background: var(--bg-raised);
+    transition: background-color var(--dur-standard) var(--ease-standard);
+  }
+
+  .service:hover {
+    background: var(--bg-page);
+  }
+
+  .service__number {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 0.1em;
+    color: var(--text-accent);
+  }
+
+  .service__number::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+  }
+
+  .service__title {
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    letter-spacing: -0.01em;
+    font-weight: var(--fw-semibold);
+  }
+
+  .service__description {
+    font-size: var(--fs-body-sm);
+    line-height: 1.55;
+  }
+
+  .service__link {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: var(--hairline);
+    width: 100%;
+  }
+</style>

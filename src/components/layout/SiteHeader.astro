@@ -250,6 +250,13 @@ const isCurrent = (href: string) =>
     white-space: pre;
   }
 
+  /* Between 1024 and 1279 px the descriptor would crowd the navigation. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .site-header__home :global(.wordmark__descriptor) {
+      display: none;
+    }
+  }
+
   /* On narrow screens the call to action moves from the bar into the drawer. */
   .site-header__nav-cta {
     margin-top: var(--space-6);

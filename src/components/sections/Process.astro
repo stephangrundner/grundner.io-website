@@ -1,0 +1,54 @@
+---
+import { processSteps } from "../../data/home";
+import Section from "../layout/Section.astro";
+---
+
+<Section number="04" label="Arbeitsweise" surface="raised" reveal>
+  <ol class="steps">
+    {processSteps.map((step, index) => (
+      <li class="step">
+        <span class="step__number" aria-hidden="true">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span class="step__label">{step}</span>
+      </li>
+    ))}
+  </ol>
+</Section>
+
+<style>
+  .steps {
+    display: grid;
+    border-top: var(--hairline);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: baseline;
+    padding-block: 18px;
+    border-bottom: var(--hairline);
+  }
+
+  .step__number {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: var(--tracking-mono);
+    color: var(--text-accent);
+  }
+
+  .step__label {
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 1024px) {
+    .steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--space-8);
+      grid-auto-flow: column;
+      grid-template-rows: repeat(3, auto);
+    }
+  }
+</style>

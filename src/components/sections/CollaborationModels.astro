@@ -1,0 +1,40 @@
+---
+import { collaborationModels } from "../../data/home";
+import Grid from "../layout/Grid.astro";
+import Section from "../layout/Section.astro";
+---
+
+<Section number="05" label="Zusammenarbeitsmodelle" reveal>
+  <Grid variant="cards" desktopColumns={3} as="ul">
+    {collaborationModels.map((model) => (
+      <li class="model">
+        <span class="model__marker" aria-hidden="true" />
+        <span class="model__name">{model}</span>
+      </li>
+    ))}
+  </Grid>
+</Section>
+
+<style>
+  .model {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    min-width: 0;
+    padding: clamp(22px, 2.5vw, 32px);
+    background: var(--bg-raised);
+  }
+
+  .model__marker {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+  }
+
+  .model__name {
+    font-size: 1.125rem;
+    line-height: var(--lh-h3);
+    font-weight: var(--fw-semibold);
+    letter-spacing: -0.01em;
+  }
+</style>

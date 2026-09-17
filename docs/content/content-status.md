@@ -8,6 +8,10 @@ hier geführt, nicht erfunden.
 | Inhalt | Status | Freigabe | Owner | Nächster Schritt |
 |---|---|---|---|---|
 | Hero-Porträt | missing | required | Stephan | Fotos auswählen |
+| Sektionsüberschriften der Startseite (derzeit nur Labels) | missing | required | Stephan | Überschriften formulieren oder Labels bestätigen |
+| Kurzprofil-Text und Projektkontexte (Startseite) | missing | required | Stephan | Text erstellen |
+| Kuratierte Insights (Startseite) | missing | — | Stephan | mit Phase 3 aus veröffentlichten Beiträgen |
+| Ausgewählte Projekte (Startseite) | missing | — | Stephan | mit Phase 3 aus veröffentlichten Cases |
 | Arbeits- oder Kontextbild (optional) | missing | required | Stephan | Fotos auswählen |
 | EGGER Case | missing | required | Stephan | öffentlich nutzbare Fakten definieren |
 | weiterer Case (Architektur/Enterprise) | missing | required | Stephan | Projekt und Freigabe klären |

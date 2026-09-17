@@ -1,0 +1,131 @@
+---
+import { hero } from "../../data/home";
+import { withBase } from "../../lib/url";
+import TechnicalGrid from "../graphics/TechnicalGrid.astro";
+import Button from "../ui/Button.astro";
+import Placeholder from "../ui/Placeholder.astro";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <TechnicalGrid />
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1 id="hero-title" class="hero__title">
+        {hero.headline.map((line) => (
+          <span class="hero__line">{line} </span>
+        ))}
+      </h1>
+      <p class="hero__description">{hero.description}</p>
+      <div class="hero__actions">
+        <Button href={withBase(hero.primaryAction.href)} size="lg">
+          {hero.primaryAction.label}
+        </Button>
+        <Button
+          href={withBase(hero.secondaryAction.href)}
+          variant="secondary"
+          size="lg"
+        >
+          {hero.secondaryAction.label}
+        </Button>
+      </div>
+      <p class="hero__roles">{hero.roles.join(" · ")}</p>
+    </div>
+    <div class="hero__portrait">
+      <Placeholder
+        variant="image"
+        description={hero.portrait.description}
+        aspectRatio="4 / 5"
+        figure="FIG. 01"
+        corners
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-bottom: var(--hairline);
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-12);
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: clamp(48px, 8vw, 128px) var(--gutter) var(--section-y);
+  }
+
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    min-width: 0;
+  }
+
+  .hero__title {
+    font-size: var(--fs-display-hero);
+    line-height: var(--lh-display);
+    letter-spacing: var(--tracking-display);
+    font-weight: var(--fw-bold);
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__description {
+    max-width: 52ch;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .hero__roles {
+    padding-top: var(--space-6);
+    border-top: var(--hairline);
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: var(--tracking-mono);
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: var(--text-meta);
+    hyphens: manual;
+  }
+
+  .hero__portrait {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__inner {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-8);
+      align-items: end;
+    }
+
+    .hero__text {
+      grid-column: 1 / span 9;
+    }
+
+    .hero__portrait {
+      grid-column: 10 / span 3;
+      max-width: none;
+    }
+  }
+
+  /* Three controlled headline lines where the width allows it. */
+  @media (min-width: 1280px) {
+    .hero__line {
+      white-space: nowrap;
+    }
+  }
+</style>

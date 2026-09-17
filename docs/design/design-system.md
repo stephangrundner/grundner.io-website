@@ -143,9 +143,9 @@ Regeln:
 - Uppercase nur für Monospace-Labels, Sektionsnummern, Wortmarke und
   Metazeilen; keine Uppercase-Headlines.
 - Hero-Headline auf Mobile dominant, ohne problematische Einzelwortumbrüche.
-- Lange deutsche Wörter: im Fließtext `hyphens: auto` mit korrektem
-  `lang`-Attribut; Überschriften und Claims ohne automatische Trennung, dort
-  gezielte Soft-Hyphens nur bei Bedarf.
+- Lange deutsche Wörter: automatische Trennung (`hyphens: auto`) nur in
+  langen Lesetexten (Artikel); Überschriften, Leads, Karten und Claims ohne
+  automatische Trennung, dort gezielte Soft-Hyphens nur bei Bedarf.
 - Finale Wahl Geist Sans vs. Instrument Sans für Headlines — Offen.
 
 **Font-Auslieferung:** Claude Design lädt die Schriften als Übergangslösung von

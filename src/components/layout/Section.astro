@@ -13,6 +13,8 @@ interface Props extends HTMLAttributes<"section"> {
   headingLevel?: 1 | 2;
   surface?: "page" | "raised" | "dark";
   technicalGrid?: boolean;
+  /** Reveal header and content on scroll (see src/scripts/reveal.ts). */
+  reveal?: boolean;
 }
 
 const {
@@ -23,12 +25,15 @@ const {
   headingLevel = 2,
   surface = "page",
   technicalGrid = false,
+  reveal = false,
   class: className,
   ...rest
 } = Astro.props;
 
 const Heading = `h${headingLevel}` as const;
 const hasHeader = Boolean(label || title || lead);
+// Without an approved title the label is the section heading.
+const LabelElement = title ? "span" : Heading;
 ---
 
 <section
@@ -39,13 +44,17 @@ const hasHeader = Boolean(label || title || lead);
   {technicalGrid && <TechnicalGrid />}
   <Container class="section__inner">
     {hasHeader && (
-      <header class="section__header">
+      <header class="section__header" data-reveal={reveal || undefined}>
         {label && (
           <div class="section__index">
-            <span class="section__label">
-              {number && <>{number}&nbsp;&nbsp;/&nbsp;&nbsp;</>}
+            <LabelElement class="section__label">
+              {number && (
+                <span aria-hidden="true">
+                  {number}&nbsp;&nbsp;/&nbsp;&nbsp;
+                </span>
+              )}
               {label}
-            </span>
+            </LabelElement>
             <span class="section__rule" aria-hidden="true" />
           </div>
         )}
@@ -62,7 +71,13 @@ const hasHeader = Boolean(label || title || lead);
         {lead && <p class="section__lead">{lead}</p>}
       </header>
     )}
-    <slot />
+    {reveal ? (
+      <div data-reveal>
+        <slot />
+      </div>
+    ) : (
+      <slot />
+    )}
   </Container>
 </section>
 
@@ -72,6 +87,10 @@ const hasHeader = Boolean(label || title || lead);
     padding-block: var(--section-y);
     background: var(--bg-page);
     color: var(--text-body);
+  }
+
+  .section--page + .section--page {
+    border-top: var(--hairline);
   }
 
   .section--raised {
@@ -101,7 +120,9 @@ const hasHeader = Boolean(label || title || lead);
   }
 
   .section__label {
+    margin: 0;
     font-family: var(--font-mono);
+    font-weight: var(--fw-regular);
     font-size: var(--fs-mono);
     letter-spacing: 0.1em;
     text-transform: uppercase;

@@ -1,0 +1,40 @@
+---
+import { proofs } from "../../data/home";
+import Placeholder from "../ui/Placeholder.astro";
+---
+
+<section class="proof" aria-label="Belege">
+  <ul class="proof__list">
+    {proofs.slice(0, 4).map((proof) => (
+      <li class="proof__item">
+        <Placeholder description={proof.description} />
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .proof {
+    background: var(--bg-raised);
+    border-bottom: var(--hairline);
+  }
+
+  .proof__list {
+    display: grid;
+    gap: var(--border-width);
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: var(--space-12) var(--gutter);
+  }
+
+  .proof__item {
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .proof__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+  }
+</style>

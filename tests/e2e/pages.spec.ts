@@ -1,10 +1,12 @@
 import { expect, test } from "@playwright/test";
 
-test("start page renders the placeholder", async ({ page }) => {
+test("start page renders", async ({ page }) => {
   const response = await page.goto("./");
 
   expect(response?.status()).toBe(200);
-  await expect(page).toHaveTitle("Stephan Grundner");
+  await expect(page).toHaveTitle(
+    "Stephan Grundner – AI-native Software & Transformation",
+  );
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Komplexe Probleme. Klare Systeme. Produktive Software.",

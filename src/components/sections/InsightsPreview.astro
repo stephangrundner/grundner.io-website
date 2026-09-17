@@ -1,0 +1,34 @@
+---
+import { curatedInsights } from "../../data/home";
+import { withBase } from "../../lib/url";
+import Grid from "../layout/Grid.astro";
+import Section from "../layout/Section.astro";
+import Placeholder from "../ui/Placeholder.astro";
+import TextLink from "../ui/TextLink.astro";
+---
+
+<Section number="06" label="Insights" surface="raised" reveal>
+  <Grid variant="cards" desktopColumns={3} as="ul">
+    {curatedInsights.slice(0, 3).map((insight) => (
+      <li class="insight">
+        <Placeholder description={insight.description} />
+      </li>
+    ))}
+  </Grid>
+  <TextLink href={withBase("/insights")} class="insights__all">
+    Alle Insights
+  </TextLink>
+</Section>
+
+<style>
+  .insight {
+    min-width: 0;
+    min-height: 240px;
+    padding: clamp(22px, 2.5vw, 36px);
+    background: var(--bg-raised);
+  }
+
+  .insights__all {
+    margin-top: var(--space-8);
+  }
+</style>

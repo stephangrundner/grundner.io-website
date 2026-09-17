@@ -8,12 +8,14 @@ src/
   components/
     graphics/              Decorative and technical graphics
     layout/                Container, Section, Grid, header, footer
-    ui/                    Buttons, links, wordmark
+    sections/              Page sections (start page)
+    ui/                    Buttons, links, wordmark, placeholder
   config/                  Build configuration and its validation
-  data/                    Small typed data: site, navigation
+  data/                    Small typed data: site, navigation, start page
   layouts/                 Page layouts
   lib/                     Framework-independent helpers (e.g. URLs)
   pages/                   Routes (file-based routing)
+  scripts/                 Client-side enhancements (e.g. scroll reveal)
   styles/                  global.css, base.css, fonts.css, tokens/
 tests/
   e2e/                     Playwright end-to-end and accessibility tests

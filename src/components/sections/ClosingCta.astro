@@ -1,0 +1,35 @@
+---
+import { closingCta } from "../../data/home";
+import { withBase } from "../../lib/url";
+import Section from "../layout/Section.astro";
+import Button from "../ui/Button.astro";
+---
+
+<Section
+  number="08"
+  label="Kontakt"
+  title={closingCta.headline}
+  surface="dark"
+  reveal
+>
+  <div class="actions">
+    <Button href={withBase(closingCta.primaryAction.href)} size="lg">
+      {closingCta.primaryAction.label}
+    </Button>
+    <Button
+      href={withBase(closingCta.secondaryAction.href)}
+      variant="secondary"
+      size="lg"
+    >
+      {closingCta.secondaryAction.label}
+    </Button>
+  </div>
+</Section>
+
+<style>
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

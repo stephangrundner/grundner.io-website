@@ -136,7 +136,7 @@ Regeln:
 - Lesedauer-Berechnung
 - URL- und Metadata-Helfer
 - Kontaktformular-Validierung
-- Production Guard
+- Production Guard (inkl. verbleibender `data-placeholder` im Build)
 - Analytics-Adapter und Einwilligungslogik
 
 ### Komponententests

@@ -114,6 +114,7 @@ for (const [name, viewport] of Object.entries(viewports)) {
       page,
     }) => {
       await page.setViewportSize(viewport);
+      await page.emulateMedia({ reducedMotion: "reduce" });
       await page.goto(path);
       const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])

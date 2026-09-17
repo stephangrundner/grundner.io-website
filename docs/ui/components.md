@@ -111,6 +111,18 @@ größeren Neuentwürfen zuerst in Claude Design ergänzen.
 | `Wordmark` | `src/components/ui/Wordmark.astro` | Phase 1 | |
 | `TechnicalGrid` | `src/components/graphics/TechnicalGrid.astro` | Phase 1 | Mobile halbe Rastergröße, nach unten ausgeblendet |
 | Skip Link | `src/layouts/BaseLayout.astro` | Phase 1 | |
+| `Placeholder` | `src/components/ui/Placeholder.astro` | Phase 2 | entspricht `ImagePlaceholder`, zusätzlich Textvariante; `data-placeholder` |
+| `Hero` | `src/components/sections/Hero.astro` | Phase 2 | Headline ab 1280 px in drei festen Zeilen |
+| `ProofStrip` | `src/components/sections/ProofStrip.astro` | Phase 2 | derzeit nur Platzhalter; `ProofMetric` folgt mit freigegebenen Proofs |
+| Standpunkt | `src/components/sections/PointOfView.astro` | Phase 2 | Graphitfläche, Aussage mit oranger Kante |
+| `ServiceCard` (Leistungen) | `src/components/sections/Services.astro` | Phase 2 | Nummer in Textfarbe mit orangem 8-px-Quadrat |
+| `CasePreview` (ausgewählte Projekte) | `src/components/sections/FeaturedProjects.astro` | Phase 2 | derzeit Platzhalter |
+| `ProcessSteps` | `src/components/sections/Process.astro` | Phase 2 | Desktop zweispaltig |
+| Zusammenarbeitsmodelle | `src/components/sections/CollaborationModels.astro` | Phase 2 | Kartenraster mit orangem Marker |
+| `InsightCard` (kuratierte Insights) | `src/components/sections/InsightsPreview.astro` | Phase 2 | derzeit Platzhalter |
+| Kurzprofil | `src/components/sections/ProfileTeaser.astro` | Phase 2 | derzeit Platzhalter |
+| `CTABand` | `src/components/sections/ClosingCta.astro` | Phase 2 | |
+| Scroll-Reveal | `src/scripts/reveal.ts` | Phase 2 | |
 
 Interne Übersicht aller umgesetzten Grundlagen: `/komponenten` (nicht verlinkt,
 immer `noindex`, vor dem Go-Live zu entfernen).

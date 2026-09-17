@@ -49,8 +49,14 @@ Astro-specific rules are added at bootstrap.
   `--text-accent`, `--text-hover` and `--decoration-accent`
   (`src/styles/tokens/semantic.css`) instead of `--accent` for text; never use
   `tw:text-accent` on light surfaces.
-* Headlines are not hyphenated automatically (`hyphens: manual`); running text
-  is.
+* No automatic hyphenation in headlines, leads, cards and claims; insert `\u00AD`
+  where a long word needs it. Automatic hyphenation only for long-form article
+  text (Phase 3).
+* Missing content is rendered with `Placeholder` (never invented, never stock
+  images) and tracked in `docs/content/content-status.md`. Placeholders carry
+  `data-placeholder` for the production guard.
+* Scroll reveal: `data-reveal` (or `Section reveal`); content stays visible
+  without JavaScript and with reduced motion. Never on the hero (LCP).
 * All internal links go through `withBase()` (`src/lib/url.ts`).
 * Interactive enhancements must leave content usable without JavaScript
   (`html.js` is set inline in the layout).

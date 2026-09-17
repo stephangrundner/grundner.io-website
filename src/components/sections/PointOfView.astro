@@ -1,0 +1,21 @@
+---
+import { pointOfView } from "../../data/home";
+import Section from "../layout/Section.astro";
+---
+
+<Section number="01" label="Standpunkt" surface="dark" technicalGrid reveal>
+  <p class="statement">{pointOfView.statement}</p>
+</Section>
+
+<style>
+  .statement {
+    max-width: 30ch;
+    padding-left: var(--space-6);
+    border-left: var(--accent-rule);
+    font-size: var(--fs-h2);
+    line-height: 1.12;
+    letter-spacing: var(--tracking-heading);
+    font-weight: var(--fw-medium);
+    hyphens: manual;
+  }
+</style>

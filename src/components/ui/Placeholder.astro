@@ -1,0 +1,125 @@
+---
+/**
+ * Clearly marked placeholder for missing or unapproved content
+ * (docs/content/content-status.md). Never replace with stock or generated images.
+ * `data-placeholder` lets the production guard find remaining placeholders.
+ */
+interface Props {
+  description: string;
+  /** `image`: hatched area with fixed aspect ratio; `text`: inline block. */
+  variant?: "image" | "text";
+  aspectRatio?: string;
+  figure?: string;
+  corners?: boolean;
+  class?: string;
+}
+
+const {
+  description,
+  variant = "text",
+  aspectRatio = "4 / 5",
+  figure,
+  corners = false,
+  class: className,
+} = Astro.props;
+---
+
+{variant === "image" ? (
+  <figure class:list={["placeholder-image", className]} data-placeholder>
+    <div class="placeholder-image__area" style={`aspect-ratio: ${aspectRatio}`}>
+      {corners && (
+        <>
+          <span
+            class="placeholder-image__corner placeholder-image__corner--start"
+            aria-hidden="true"
+          />
+          <span
+            class="placeholder-image__corner placeholder-image__corner--end"
+            aria-hidden="true"
+          />
+        </>
+      )}
+      <span class="placeholder__label">Platzhalter · {description}</span>
+    </div>
+    {figure && (
+      <figcaption class="placeholder-image__figure">{figure}</figcaption>
+    )}
+  </figure>
+) : (
+  <p class:list={["placeholder-text", className]} data-placeholder>
+    <span class="placeholder__label">Platzhalter</span>
+    <span class="placeholder-text__description">{description}</span>
+  </p>
+)}
+
+<style>
+  .placeholder__label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+  }
+
+  .placeholder-image {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+    margin: 0;
+  }
+
+  .placeholder-image__area {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    padding: var(--space-4);
+    background-color: var(--bg-sunken);
+    background-image: var(--hatch);
+    border: var(--hairline);
+  }
+
+  .placeholder-image__corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+  }
+
+  .placeholder-image__corner--start {
+    top: var(--space-4);
+    left: var(--space-4);
+    border-top: var(--hairline-strong);
+    border-left: var(--hairline-strong);
+  }
+
+  .placeholder-image__corner--end {
+    right: var(--space-4);
+    bottom: var(--space-4);
+    border-right: var(--hairline-strong);
+    border-bottom: var(--hairline-strong);
+  }
+
+  .placeholder-image__figure {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-sm);
+    letter-spacing: 0.06em;
+    color: var(--text-meta);
+  }
+
+  .placeholder-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background-color: var(--bg-sunken);
+    background-image: var(--hatch);
+    border: var(--hairline);
+  }
+
+  .placeholder-text__description {
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-lead);
+    color: var(--text-body);
+  }
+</style>

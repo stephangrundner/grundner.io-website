@@ -1,0 +1,57 @@
+---
+import { featuredProjects } from "../../data/home";
+import { withBase } from "../../lib/url";
+import Section from "../layout/Section.astro";
+import Placeholder from "../ui/Placeholder.astro";
+import TextLink from "../ui/TextLink.astro";
+---
+
+<Section number="03" label="Ausgewählte Projekte" reveal>
+  <ul class="projects">
+    {featuredProjects.map((project) => (
+      <li class="project">
+        <div class="project__text">
+          <Placeholder description={project.description} />
+        </div>
+        <Placeholder
+          variant="image"
+          description="Projektartefakt · freigegebener Screenshot oder Systemmodell"
+          aspectRatio="16 / 10"
+        />
+      </li>
+    ))}
+  </ul>
+  <TextLink href={withBase("/projekte")} class="projects__all">
+    Alle Projekte
+  </TextLink>
+</Section>
+
+<style>
+  .projects {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .project {
+    display: grid;
+    gap: clamp(24px, 3vw, 56px);
+    padding: clamp(24px, 3vw, 48px);
+    background: var(--bg-page);
+    border: var(--hairline);
+  }
+
+  .project__text {
+    min-width: 0;
+  }
+
+  .projects__all {
+    margin-top: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .project {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+  }
+</style>

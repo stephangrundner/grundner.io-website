@@ -6,7 +6,8 @@ Status: bestätigt durch Stephan Grundner (2026-09-17).
 |---|---|
 | 0 — Projektinitialisierung | abgeschlossen (2026-09-17, erstes Deployment der Platzhalterseite) |
 | 1 — Design Foundation | abgenommen (2026-09-17) |
-| 2–7 | offen |
+| 2 — Startseite | umgesetzt, Abnahme durch Stephan offen |
+| 3–7 | offen |
 
 Grundsatz: Jeder Schritt liefert einen vertikalen, prüfbaren Zustand. Keine
 wochenlange Foundation ohne sichtbares Ergebnis.

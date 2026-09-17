@@ -1,28 +1,42 @@
 ---
-import Section from "../components/layout/Section.astro";
+import ClosingCta from "../components/sections/ClosingCta.astro";
+import CollaborationModels from "../components/sections/CollaborationModels.astro";
+import FeaturedProjects from "../components/sections/FeaturedProjects.astro";
+import Hero from "../components/sections/Hero.astro";
+import InsightsPreview from "../components/sections/InsightsPreview.astro";
+import PointOfView from "../components/sections/PointOfView.astro";
+import Process from "../components/sections/Process.astro";
+import ProfileTeaser from "../components/sections/ProfileTeaser.astro";
+import ProofStrip from "../components/sections/ProofStrip.astro";
+import Services from "../components/sections/Services.astro";
+import { hero } from "../data/home";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = `${site.name} – ${site.descriptor}`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: new URL(import.meta.env.BASE_URL, Astro.site).href,
+  description: hero.description,
+  knowsAbout: hero.roles,
+};
 ---
 
 <BaseLayout
-  title={site.name}
-  description="Die Website von Stephan Grundner ist in Vorbereitung."
+  title={title}
+  description={hero.description}
+  structuredData={structuredData}
 >
-  <Section
-    label="In Vorbereitung"
-    title={site.claim}
-    headingLevel={1}
-    technicalGrid
-    class="placeholder"
-  >
-    <p class="tw:max-w-measure tw:text-lead">
-      Die Website ist in Vorbereitung.
-    </p>
-  </Section>
+  <Hero />
+  <ProofStrip />
+  <PointOfView />
+  <Services />
+  <FeaturedProjects />
+  <Process />
+  <CollaborationModels />
+  <InsightsPreview />
+  <ProfileTeaser />
+  <ClosingCta />
 </BaseLayout>
-
-<style>
-  .placeholder {
-    min-height: 60vh;
-  }
-</style>
