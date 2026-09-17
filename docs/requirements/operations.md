@@ -20,7 +20,11 @@
 - GitHub Pages erfordert im kostenlosen Plan ein öffentliches Repository.
   Dieses Repository wird öffentlich und direkt von GitHub Pages ausgeliefert —
   siehe [Schutz nicht-öffentlicher Inhalte](#schutz-nicht-öffentlicher-inhalte).
-- Endgültige Domain: Offen.
+- Domain: **grundner.io**.
+- Repository: `stephangrundner/grundner.io-website` auf GitHub (öffentlich).
+- Stand 2026-09-17: Das Repository ist noch leer, GitHub Pages ist noch nicht
+  aktiviert. Die Domain löst auf Cloudflare-Adressen auf, d. h. Cloudflare ist
+  als Proxy vorgeschaltet. Ob Cloudflare dauerhaft vorgeschaltet bleibt: Offen.
 
 ## CI/CD
 

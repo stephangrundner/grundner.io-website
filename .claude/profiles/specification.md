@@ -45,7 +45,7 @@ The phase ends when:
 
 * ADR-0002 (tech stack) is accepted (done 2026-09-17),
 * ADR-0003 (public repository) is accepted (done 2026-09-17),
-* `origin` is set up,
+* `origin` is set up (done 2026-09-17),
 * the design system from Claude Design is available in the repository
   (done 2026-09-17, `docs/design/claude-design/`),
 * and the phase plan in `docs/delivery/phases.md` has been confirmed.

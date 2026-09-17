@@ -8,7 +8,6 @@ getroffen ist.
 
 | Frage | Bezug |
 |---|---|
-| Remote `origin` einrichten: GitHub-Account/Organisation, Repository-Name | `.claude/project/git-workflow.md` |
 | Wo wird sensibles Projektwissen stattdessen gepflegt? | [ADR-0003](decisions/0003-public-repository.md) |
 | Umgang mit Entwürfen, die öffentlich im Repository liegen | [ADR-0003](decisions/0003-public-repository.md) |
 | Umsetzungsphasen bestätigen | [Phasen](delivery/phases.md) |
@@ -17,7 +16,8 @@ getroffen ist.
 
 | Frage | Bezug |
 |---|---|
-| endgültige Domain | [Betrieb](requirements/operations.md) |
+| Kanonische Adresse: `grundner.io` oder `www.grundner.io` | [Content-Modell](domain/content-model.md) |
+| Bleibt Cloudflare als Proxy vorgeschaltet? Relevant für HTTP-Header, CSP und ADR-0004 | [Betrieb](requirements/operations.md#hosting) |
 | Locale `de-AT` oder `de-DE` | [Content-Modell](domain/content-model.md) |
 | formelle Anrede „Sie“ bestätigen | [Marke](product/brand-and-content-rules.md#tonalität-und-sprache) |
 | Headline-Schrift: Geist Sans oder Instrument Sans | [Design System](design/design-system.md#typografie) |

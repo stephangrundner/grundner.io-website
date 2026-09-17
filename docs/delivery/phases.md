@@ -7,13 +7,13 @@ wochenlange Foundation ohne sichtbares Ergebnis.
 
 ## Phase 0 — Projektinitialisierung
 
-Voraussetzung: Phasen bestätigt, Remote `origin` eingerichtet.
+Voraussetzung: Phasen bestätigt. Remote `origin` ist eingerichtet.
 
 - Astro-Projekt, TypeScript strict, pnpm
 - Lint, Format, Unit- und E2E-Test-Grundlage
 - validierte Build-Konfiguration
 - Pipeline: Qualitäts-Gates und Veröffentlichung auf GitHub Pages
-- GitHub Pages für dieses Repository und Domain-Vorbereitung
+- GitHub Pages für dieses Repository aktivieren, Custom Domain `grundner.io`
 
 Abnahme: App startet lokal, Build läuft, Tests laufen, ein Push auf `main`
 veröffentlicht eine Platzhalterseite.
