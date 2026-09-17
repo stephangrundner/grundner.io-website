@@ -117,10 +117,10 @@ immer `noindex`, vor dem Go-Live zu entfernen).
 
 ### Abweichungen vom Design System
 
-- **Aktiver Navigationspunkt mobil:** Das Design System färbt ihn orange
-  (`--accent-hover`). Umgesetzt als orange 2-px-Linie links bei schwarzem Text,
-  weil oranger Text auf hellem Grund WCAG AA verfehlt
-  ([Offene Fragen](../open-questions.md)).
+- **Oranger Text:** Nur auf dunklen Flächen
+  ([Design System](../design/design-system.md#farbe)). Aktiver Navigationspunkt
+  mobil: orange 2-px-Linie links; Hover von Links auf hellem Grund: orange
+  Unterstreichung statt oranger Schrift.
 - **CTA auf schmalen Displays:** Unter 480 px passt der CTA nicht neben
   Wortmarke und Menü-Button; er steht dort am Ende des mobilen Menüs.
 - **Mobiles Menü ohne JavaScript:** Die Navigation ist dann dauerhaft

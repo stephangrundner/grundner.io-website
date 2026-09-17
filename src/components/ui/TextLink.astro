@@ -45,6 +45,7 @@ const glyphs = { right: "→", down: "↓", left: "←" } as const;
     font-size: 0.9375rem;
     font-weight: var(--fw-semibold);
     color: var(--text-body);
+    text-decoration: none;
     transition: color var(--dur-micro) var(--ease-standard);
   }
 
@@ -54,7 +55,19 @@ const glyphs = { right: "→", down: "↓", left: "←" } as const;
   }
 
   .text-link:hover {
-    color: var(--accent-hover);
+    color: var(--text-hover);
+    text-decoration: none;
+  }
+
+  .text-link--underline:hover span:not(.text-link__glyph) {
+    border-bottom-color: var(--decoration-accent);
+  }
+
+  .text-link:not(.text-link--underline):hover span:not(.text-link__glyph) {
+    text-decoration-line: underline;
+    text-decoration-color: var(--decoration-accent);
+    text-decoration-thickness: var(--border-width-strong);
+    text-underline-offset: 0.3em;
   }
 
   .text-link__glyph {

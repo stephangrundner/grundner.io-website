@@ -45,8 +45,10 @@ Astro-specific rules are added at bootstrap.
   them with utilities.
 * Dark surfaces set `data-surface="dark"`; components use semantic aliases
   (`--bg-page`, `--text-body`, …) and adapt without `onDark` props.
-* Orange text only on dark surfaces until the contrast question in
-  `docs/open-questions.md` is resolved.
+* Orange text only on dark surfaces (decision 2026-09-17). Use
+  `--text-accent`, `--text-hover` and `--decoration-accent`
+  (`src/styles/tokens/semantic.css`) instead of `--accent` for text; never use
+  `tw:text-accent` on light surfaces.
 * Headlines are not hyphenated automatically (`hyphens: manual`); running text
   is.
 * All internal links go through `withBase()` (`src/lib/url.ts`).

@@ -89,8 +89,17 @@ kein globales Dark Theme.
 
 Farbregeln:
 
-- Orange als Fläche nur beim primären CTA; sonst als Sektionsnummer,
-  Statusmarker, Diagrammfokus, 2-px-Kante am Pull Quote.
+- **Orange als Textfarbe nur auf dunklen Flächen** (Entscheidung Stephan
+  Grundner, 2026-09-17). Auf hellen Flächen verfehlt oranger Text WCAG AA; dort
+  wird Orange nur als Fläche (primärer CTA), Linie und Marker eingesetzt.
+  Stellen, an denen das Design System orangen Text auf hellem Grund vorsieht
+  (Nummern in `ServiceCard` und `ProcessSteps`, Meta-Zeile der `InsightCard`,
+  aktiver Navigationspunkt, Hover-Farbe von Links), verwenden dort
+  Textfarbe mit orangem Marker bzw. oranger Unterstreichung. Umsetzung über
+  die Aliase `--text-accent`, `--text-hover` und `--decoration-accent`
+  (`src/styles/tokens/semantic.css`), die auf dunklen Flächen zu Orange werden.
+- Orange als Fläche nur beim primären CTA; sonst als Statusmarker,
+  Diagrammfokus, 2-px-Kante am Pull Quote, aktive Linie und Unterstreichung.
 - Text auf Orange ist schwarz, nie weiß.
 - Keine Orangeflächen als Dekoration, keine zweite Markenfarbe.
 - Dunkle Sektionen bewusst gesetzt, kein durchgehendes Dark Theme.
@@ -99,10 +108,8 @@ Farbregeln:
 - Kontraste (geprüft 2026-09-17): Schwarz auf Orange 6,3:1; `--ink-muted` auf
   `--canvas` 5,9:1; `--line-strong` auf Graphit 6,0:1; Orange auf Graphit
   5,6:1; Fokusblau auf `--canvas` 4,1:1 und auf Graphit 3,8:1 (Nicht-Text,
-  mind. 3:1). **Oranger Text auf hellen Flächen erreicht nur 2,8–3,5:1 und
-  verfehlt WCAG AA** — bis zur Klärung wird Orange auf hellem Grund nur für
-  Flächen, Linien und Marker eingesetzt, nicht für Text
-  ([Offene Fragen](../open-questions.md)).
+  mind. 3:1). Oranger Text auf hellen Flächen erreicht nur 2,8–3,5:1 (daher
+  die Regel oben).
 - `--line-strong` auf `--canvas` erreicht 2,6:1 und genügt damit nicht als
   alleinige Begrenzung von Eingabefeldern (Nicht-Text-Kontrast 3:1) — bei den
   Formularen in Phase 5 zu berücksichtigen.
@@ -136,8 +143,9 @@ Regeln:
 - Uppercase nur für Monospace-Labels, Sektionsnummern, Wortmarke und
   Metazeilen; keine Uppercase-Headlines.
 - Hero-Headline auf Mobile dominant, ohne problematische Einzelwortumbrüche.
-- Lange deutsche Wörter: `hyphens: auto`, korrekte `lang`-Attribute, gezielte
-  Soft-Hyphens nur bei Bedarf.
+- Lange deutsche Wörter: im Fließtext `hyphens: auto` mit korrektem
+  `lang`-Attribut; Überschriften und Claims ohne automatische Trennung, dort
+  gezielte Soft-Hyphens nur bei Bedarf.
 - Finale Wahl Geist Sans vs. Instrument Sans für Headlines — Offen.
 
 **Font-Auslieferung:** Claude Design lädt die Schriften als Übergangslösung von
@@ -150,7 +158,8 @@ Schriftwahl dafür fällt. Keine Laufzeitanfrage an Google Fonts
 IBM Plex Mono stehen unter der SIL Open Font License.
 
 **Umsetzung im Code:** Tokens unter `src/styles/tokens/` (Kopie des Snapshots
-ohne `fonts.css`), Einstieg `src/styles/global.css`.
+ohne `fonts.css`, ergänzt um projekteigene Aliase in `semantic.css`), Einstieg
+`src/styles/global.css`.
 
 ### Abstände und Layout
 
@@ -241,7 +250,9 @@ Regeln:
   Skalierung, kein Anheben. Hover-Inhalte bleiben auf Touch nicht verborgen.
 - Buttons und Eingabefelder rechteckig, maximal 2 px Radius. Keine Pillen.
 - Hover: Orange wird dunkler; Outline-Buttons füllen sich mit Ink und
-  invertieren; Links wechseln auf accent-hover, Pfeil verschiebt sich um 3 px.
+  invertieren; Links erhalten auf hellen Flächen eine orange Unterstreichung
+  bzw. Unterkante, auf dunklen Flächen orange Schrift; Pfeil verschiebt sich um
+  3 px.
 - Press: keine Skalierung, nur Farbwechsel.
 - Disabled: `--surface-muted` mit `--line-strong`-Text.
 - Fokus: 2 px `--focus` mit 3 px Offset, global — niemals entfernen.

@@ -27,8 +27,13 @@ a {
   text-decoration: none;
 }
 
+/* Orange text only on dark surfaces; on light surfaces hover is marked by an orange underline. */
 a:hover {
-  color: var(--accent-hover);
+  color: var(--text-hover);
+  text-decoration-line: underline;
+  text-decoration-color: var(--decoration-accent);
+  text-decoration-thickness: var(--border-width-strong);
+  text-underline-offset: 0.3em;
 }
 
 :focus-visible {

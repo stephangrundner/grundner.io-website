@@ -123,3 +123,30 @@ for (const [name, viewport] of Object.entries(viewports)) {
     });
   }
 }
+
+test.describe("orange as text colour only on dark surfaces", () => {
+  test.use({ viewport: viewports.desktop });
+
+  const ink = "rgb(11, 11, 11)";
+  const accent = "rgb(255, 90, 31)";
+
+  test("links keep dark text on hover on light surfaces", async ({ page }) => {
+    await page.goto("komponenten");
+    const link = page
+      .locator("section:not([data-surface='dark'])")
+      .getByRole("link", { name: "Weiterlesen" });
+
+    await link.hover();
+    await expect(link).toHaveCSS("color", ink);
+  });
+
+  test("links turn orange on hover on dark surfaces", async ({ page }) => {
+    await page.goto("komponenten");
+    const link = page
+      .locator("section[data-surface='dark']")
+      .getByRole("link", { name: "Weiterlesen" });
+
+    await link.hover();
+    await expect(link).toHaveCSS("color", accent);
+  });
+});

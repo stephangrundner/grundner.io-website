@@ -15,6 +15,7 @@
 @import "./tokens/spacing.css";
 @import "./tokens/borders.css";
 @import "./tokens/motion.css";
+@import "./tokens/semantic.css";
 @import "./base.css" layer(base);
 
 @theme {

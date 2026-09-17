@@ -143,6 +143,11 @@ const isCurrent = (href: string) =>
     padding-inline: var(--gutter);
   }
 
+  .site-header__home,
+  .site-header__home:hover {
+    text-decoration: none;
+  }
+
   .site-header__home {
     display: inline-flex;
     align-items: center;
@@ -221,7 +226,7 @@ const isCurrent = (href: string) =>
     color: var(--text-body);
   }
 
-  /* Orange text fails WCAG AA on light surfaces; the current page is marked by an orange rule. */
+  /* Orange text only on dark surfaces: the current page is marked by an orange rule. */
   .site-header__link[aria-current="page"] {
     padding-left: var(--space-3);
     border-left: var(--accent-rule);
@@ -299,6 +304,11 @@ const isCurrent = (href: string) =>
       border-bottom: var(--border-width-strong) solid transparent;
       font-size: 0.90625rem;
       white-space: nowrap;
+    }
+
+    .site-header__link:hover {
+      text-decoration: none;
+      border-bottom-color: var(--decoration-accent);
     }
 
     .site-header__link[aria-current="page"] {

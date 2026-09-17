@@ -1,0 +1,20 @@
+/*
+ * Project-specific semantic aliases (not part of the Claude Design snapshot).
+ *
+ * Decision 2026-09-17: orange is used as text colour only on dark surfaces.
+ * On light surfaces orange text fails WCAG AA; there orange is limited to
+ * areas (primary CTA), lines and markers. See docs/design/design-system.md#farbe.
+ */
+:root {
+  /* Text that the design system highlights in orange (numbers, meta lines). */
+  --text-accent: var(--text-body);
+  /* Link and control text on hover. */
+  --text-hover: var(--text-body);
+  /* Underline or rule marking hover and active states. */
+  --decoration-accent: var(--accent);
+}
+
+[data-surface="dark"] {
+  --text-accent: var(--accent);
+  --text-hover: var(--accent);
+}

@@ -59,6 +59,11 @@ const year = new Date().getFullYear();
     padding: var(--space-16) var(--gutter) var(--space-8);
   }
 
+  .site-footer__home,
+  .site-footer__home:hover {
+    text-decoration: none;
+  }
+
   .site-footer__home {
     display: inline-flex;
     min-height: var(--touch-min);
@@ -119,10 +124,6 @@ const year = new Date().getFullYear();
     align-items: center;
     min-height: var(--touch-min);
     color: var(--text-meta);
-  }
-
-  .site-footer__legal a:hover {
-    color: var(--accent-hover);
   }
 
   @media (min-width: 1024px) {
