@@ -13,8 +13,8 @@ Voraussetzung: Phasen bestätigt. Remote `origin` ist eingerichtet.
 - Lint, Format, Unit- und E2E-Test-Grundlage
 - validierte Build-Konfiguration
 - Pipeline: Qualitäts-Gates und Veröffentlichung auf GitHub Pages
-- GitHub Pages für dieses Repository aktivieren, Custom Domain `grundner.io`,
-  DNS gemäß [Betrieb](../requirements/operations.md#domain-und-dns) umstellen
+- GitHub Pages für dieses Repository aktivieren, ohne Custom Domain
+  ([Vorabversion](../requirements/operations.md#vorabversion-bis-zum-go-live))
 
 Abnahme: App startet lokal, Build läuft, Tests laufen, ein Push auf `main`
 veröffentlicht eine Platzhalterseite.
@@ -67,7 +67,9 @@ visuelle Baselines, Content-Review, Browser- und Geräteprüfung.
 
 ## Phase 7 — Go-Live
 
-Domain, Formularzustellung produktiv, Analytics produktiv, Monitoring,
+Custom Domain `grundner.io` setzen und DNS gemäß
+[Betrieb](../requirements/operations.md#domain-und-dns) umstellen, Basispfad auf
+`/`, Formularzustellung produktiv, Analytics produktiv, Monitoring,
 [Release-Checkliste](../release/release-checklist.md), Rollbacktest.
 
 ## Später

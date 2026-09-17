@@ -22,6 +22,22 @@
   siehe [Schutz nicht-öffentlicher Inhalte](#schutz-nicht-öffentlicher-inhalte).
 - Repository: `stephangrundner/grundner.io-website` auf GitHub (öffentlich).
 
+## Vorabversion bis zum Go-Live
+
+Bis die Website fertig ist, ist sie nur über die GitHub-Pages-Adresse des
+Repositories erreichbar:
+
+**https://stephangrundner.github.io/grundner.io-website/**
+
+- In dieser Zeit ist keine Custom Domain gesetzt; `grundner.io` wird erst beim
+  Go-Live umgestellt.
+- Die Website liegt dabei unter dem Unterpfad `/grundner.io-website/`. Build
+  und interne Links müssen diesen Basispfad berücksichtigen und beim Go-Live
+  ohne Codeänderung auf `/` umschaltbar sein (Build-Konfiguration).
+- Sitemap, Canonical URLs und Open-Graph-Adressen verwenden in der Vorabversion
+  die GitHub-Pages-Adresse.
+- Ob die Vorabversion von Suchmaschinen ausgeschlossen wird: Offen.
+
 ## Domain und DNS
 
 - Kanonische Adresse: **https://grundner.io**
@@ -31,7 +47,7 @@
   kommt direkt von GitHub Pages.
 - HTTPS über das Zertifikat von GitHub Pages, „Enforce HTTPS“ aktiv.
 
-Zielkonfiguration (Umsetzung in Phase 0):
+Zielkonfiguration (Umsetzung beim Go-Live, Phase 7):
 
 | Name | Typ | Ziel | Proxy |
 |---|---|---|---|
