@@ -1,0 +1,10 @@
+dist/
+.astro/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+.idea/
+# Documentation is formatted by hand; the design snapshot must stay unmodified.
+docs/
+.claude/
+CLAUDE.md

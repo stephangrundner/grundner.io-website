@@ -1,6 +1,11 @@
 # Umsetzungsphasen
 
-Status: Vorschlag — an statisches Hosting angepasst, Bestätigung ausstehend.
+Status: bestätigt durch Stephan Grundner (2026-09-17).
+
+| Phase | Stand |
+|---|---|
+| 0 — Projektinitialisierung | in Arbeit |
+| 1–7 | offen |
 
 Grundsatz: Jeder Schritt liefert einen vertikalen, prüfbaren Zustand. Keine
 wochenlange Foundation ohne sichtbares Ergebnis.

@@ -79,18 +79,38 @@ am selben Tag.
 
 Versionen: aktuelle stabile Versionen beim Bootstrap, keine Release Candidates,
 Beta- oder Canary-Versionen; keine automatischen Major-Updates in der ersten
-Implementierungsphase. Konkrete Versionen werden beim Bootstrap ergänzt.
+Implementierungsphase.
+
+### Versionen beim Bootstrap (2026-09-17)
+
+| Werkzeug | Version |
+|---|---|
+| Node.js | 24 (LTS) |
+| pnpm | 12.4.2 |
+| Astro | 7.3.2 |
+| TypeScript | 6.0.3 (7.x wird von `@astrojs/check` und `typescript-eslint` noch nicht unterstützt) |
+| @astrojs/check | 0.9.10 |
+| ESLint / typescript-eslint / eslint-plugin-astro | 10.10.0 / 8.70.0 / 3.2.0 |
+| Prettier / prettier-plugin-astro | 3.9.7 / 1.0.0 |
+| Vitest | 5.0.1 |
+| Playwright / @axe-core/playwright | 1.63.0 / 4.13.0 |
+| GitHub Actions | checkout v7, pnpm/action-setup v6, setup-node v7, upload-pages-artifact v5, deploy-pages v5 |
+
+pnpm lehnt standardmäßig Pakete ab, die jünger als einen Tag sind
+(`minimumReleaseAge`). Diese Schutzmaßnahme bleibt aktiv; deshalb wurden Astro
+7.3.2, eslint-plugin-astro 3.2.0 und prettier-plugin-astro 1.0.0 statt der
+wenige Stunden alten Folgeversionen gewählt.
+
+Tailwind CSS, MDX, Sitemap, RSS und Fonts werden mit der Phase eingeführt, die
+sie benötigt.
 
 Nicht verwendet: siehe `.claude/capabilities/web-frontend.md`.
 
 ## Konsequenzen
 
-- Mit dem Bootstrap wird das Profil `specification` durch ein Bootstrap-Profil
-  ersetzt; `.claude/project/repository-layout.md`,
-  `.claude/project/build-and-test.md` und Astro-spezifische Regeln werden
-  angelegt.
-- Der Bootstrap beginnt erst, wenn die übrigen Voraussetzungen des Profils
-  `specification` erfüllt sind.
+- Mit dem Bootstrap ersetzt das Profil `implementation` das Profil
+  `specification`; `.claude/project/repository-layout.md` und
+  `.claude/project/build-and-test.md` sind angelegt.
 - Die Next.js-spezifischen Teile der Implementierungsspezifikation 0.1
   (Verzeichnisstruktur, Server Components, `next/image`, `next/font`) gelten
   nicht.

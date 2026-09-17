@@ -2,7 +2,7 @@
 
 Index der verbindlichen Projektdokumentation für die Website von Stephan
 Grundner. Arbeitsweise: `CLAUDE.md`; aktives Profil:
-`.claude/profiles/specification.md`.
+`.claude/profiles/implementation.md`.
 
 ## Dokumente
 

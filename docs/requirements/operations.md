@@ -83,19 +83,20 @@ Proxys und wird durch die Weiterleitung von GitHub Pages ersetzt.
 ### Pipeline-Schritte
 
 1. Abhängigkeiten mit gesperrtem Lockfile installieren
-2. Lint
+2. Lint und Formatprüfung
 3. Typecheck
 4. Unit Tests
-5. Content-Validierung inklusive Production Guard
+5. Content-Validierung inklusive Production Guard (ab Phase 3)
 6. Production Build
-7. End-to-End-Smoke-Tests
+7. End-to-End- und Accessibility-Smoke-Tests
 8. Veröffentlichung auf GitHub Pages
 
 Schlägt ein Schritt fehl, wird nicht veröffentlicht; die bisherige Version
 bleibt online.
 
-Vorschlag: Die Pipeline läuft auch für Pushes auf `feature/*`-Branches, jedoch
-ohne Schritt 8.
+Die Pipeline läuft auch für Pushes auf `feature/*`-Branches und für Pull
+Requests, dort ohne Schritt 8. Umsetzung: `.github/workflows/ci.yml`.
+GitHub Pages bezieht die Website aus diesem Workflow (Quelle „GitHub Actions“).
 
 Die Spezifikation 0.1 empfahl Preview/Staging und eine manuelle Freigabe vor
 Production. Die Vorgabe „Push auf `main` rollt aus“ ersetzt das; die Freigabe
@@ -119,7 +120,19 @@ zu erzeugen und zu veröffentlichen.
 
 ## Konfiguration
 
-- Konfiguration erfolgt zur Build-Zeit und wird beim Build validiert.
+- Konfiguration erfolgt zur Build-Zeit und wird beim Build validiert;
+  ungültige Werte brechen den Build ab.
+
+| Variable | Bedeutung | Vorabversion | Go-Live |
+|---|---|---|---|
+| `SITE_URL` | Origin ohne abschließenden Slash | `https://stephangrundner.github.io` | `https://grundner.io` |
+| `BASE_PATH` | Basispfad | `/grundner.io-website` | `/` |
+| `SITE_NOINDEX` | Suchmaschinen-Ausschluss | `true` | `false` |
+
+- Die Pipeline verwendet die Werte der Vorabversion, solange keine
+  Repository-Variablen gleichen Namens gesetzt sind. Der Go-Live erfolgt durch
+  Setzen dieser Variablen, ohne Codeänderung.
+- Ohne Angaben (lokal) gilt: `http://localhost:4321`, `/`, Ausschluss aktiv.
 - Die ausgelieferte Website enthält keine Secrets. Secrets existieren nur in der
   Pipeline (z. B. Zugangsdaten für die Veröffentlichung).
 - Optionale Konfiguration darf Features kontrolliert deaktivieren
